@@ -1,3 +1,6 @@
+import BookList, { favouriteBooks } from "./BookList";
+import Card from "./Card";
+import Mailbox from "./Mailbox";
 import Product from "./Product";
 
 export default function App() {
@@ -11,6 +14,13 @@ export default function App() {
         imgUrl="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?dpr=2&h=480&w=640"
         price={14.29}
       />
+      <Mailbox username="Yurii" messages="Hi" />
+      <h1>Books of the week</h1>
+      <BookList books={favouriteBooks} />
+      <Card>
+        <h1>Card title</h1>
+        <p>Text between opening and closing tag</p>
+      </Card>
     </div>
   );
 }
