@@ -1,7 +1,13 @@
-import BookList, { favouriteBooks } from "./BookList";
+import BookList from "./BookList";
 import Card from "./Card";
 import Mailbox from "./Mailbox";
 import Product from "./Product";
+
+const favouriteBooks = [
+  { id: "id-1", name: "JS for beginners" },
+  { id: "id-2", name: "React basics" },
+  { id: "id-3", name: "React Router overview" },
+];
 
 export default function App() {
   return (
