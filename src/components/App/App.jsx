@@ -1,4 +1,4 @@
-import Custombutton from "./CustomButton";
+import Custombutton from "./CustomButton/CustomButton";
 import { useState } from "react";
 
 export default function App() {
