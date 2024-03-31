@@ -1,3 +1,3 @@
-export default function Custombutton() {
-  return;
+export default function Custombutton({ value, onUpdate }) {
+  return <button onClick={onUpdate}>Current: {value}</button>;
 }
