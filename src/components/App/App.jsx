@@ -4,7 +4,7 @@ export default function App() {
   const [cliks, setcliks] = useState(() => {
     const savedClicks = window.localStorage.getItem("saved-cliks");
     if (savedClicks !== null) {
-      return savedClicks;
+      return parseInt(savedClicks);
     }
     return 0;
   });
