@@ -1,82 +1,31 @@
-// import LoginForm from "../LoginForm/LoginForm";
-// import MyComponets from "../MyComponents/MyComponents";
+import TaskList from "../TaskList/TaskList";
+import initialTasks from "../../todo.json";
+import Form from "../Form/Form";
+import Filter from "../Filter/Filter";
+import css from "./App.module.css";
 import { useState } from "react";
-// import LangSwitcher from "../LangSwitcher/LangSwitcher";
-// import RenderFlag from "../RenderFlag/RenderFlag";
-
-// import SearchBar from "../SearchBar/SearchBar";
 
 export default function App() {
-  // const [coffeeSize, setCoffeeSize] = useState("sm");
-
-  // const handleChangeizeCoffee = (evt) => {
-  //   setCoffeeSize(evt.target.value);
-  //   console.log(evt.target.value);
-  // };
-  // const [lang, setLang] = useState("uk");
-
-  // const handleLogin = (userData) => {
-  //   console.log(userData);
-  // };
-
-  const [hasAccepted, setHasAccepted] = useState(false);
-  const handleChange = (evt) => {
-    setHasAccepted(evt.target.checked);
+  const [tasks, setTasks] = useState(initialTasks);
+  const [filter, setFilter] = useState("");
+  const addTask = (newTask) => {
+    setTasks((prevTask) => {
+      return [...prevTask, newTask];
+    });
   };
-
+  const deleteTask = (taskId) => {
+    setTasks((prevTask) => {
+      return prevTask.filter((task) => task.id !== taskId);
+    });
+  };
+  const visibleTasks = tasks.filter((task) =>
+    task.text.toLowerCase().includes(filter.toLowerCase())
+  );
   return (
-    <div>
-      <label>
-        <input
-          type="checkbox"
-          name="terms"
-          checked={hasAccepted}
-          onChange={handleChange}
-        />
-        I accept terms and conditions
-      </label>
-      <button type="button" disabled={!hasAccepted}>
-        Proceed
-      </button>
-      {/* <h1>Select coffe size</h1>
-      <label>
-        <input
-          checked={coffeeSize === "sm"}
-          type="radio"
-          name="coffeeSize"
-          value="sm"
-          onChange={handleChangeizeCoffee}
-        />
-        Smal
-      </label>
-      <label>
-        <input
-          checked={coffeeSize === "md"}
-          type="radio"
-          name="coffeeSize"
-          value="md"
-          onChange={handleChangeizeCoffee}
-        />
-        Medium
-      </label>
-      <label>
-        <input
-          checked={coffeeSize === "lg"}
-          type="radio"
-          name="coffeeSize"
-          value="lg"
-          onChange={handleChangeizeCoffee}
-        />
-        Large
-      </label> */}
-      {/* <p>Selected language: {lang}</p>
-
-      <LangSwitcher value={lang} onSelect={setLang} />
-      <RenderFlag langData={lang} /> */}
-      {/* <SearchBar /> */}
-      {/* <h1>Please login to your account!</h1>
-      <LoginForm onLogin={handleLogin} />
-      <MyComponets /> */}
+    <div className={css.container}>
+      <Form onAdd={addTask} />
+      <Filter value={filter} onFilter={setFilter} />
+      <TaskList tasks={visibleTasks} onDelete={deleteTask} />
     </div>
   );
 }
