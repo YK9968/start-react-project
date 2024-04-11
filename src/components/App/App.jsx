@@ -3,32 +3,18 @@
 // import Form from "../Form/Form";
 // import Filter from "../Filter/Filter";
 // import css from "./App.module.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Articles from "../Articles/Articles";
+
+import { useState } from "react";
+import Error from "../Error/Error";
+import Loader from "../Loader/Loader";
+import SearchForm from "../SearchForm/SearchForm";
+import { fetchArticlesWithTopic } from "../../articles-api";
+import ArticleList from "../ArticleList/ArticleList";
 
 export default function App() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
-  useEffect(() => {
-    async function fetchArticles() {
-      try {
-        setLoading(true);
-        const response = await axios.get(
-          "https://hn.algolia.com/api/v1/search?query=react"
-        );
-        setArticles(response.data.hits);
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchArticles();
-  }, []);
   // const [tasks, setTasks] = useState(initialTasks);
   // const [filter, setFilter] = useState("");
   // const addTask = (newTask) => {
@@ -44,14 +30,26 @@ export default function App() {
   // const visibleTasks = tasks.filter((task) =>
   //   task.text.toLowerCase().includes(filter.toLowerCase())
   // );
+  const handleSearch = async (topic) => {
+    try {
+      setArticles([]);
+      setLoading(true);
+      setError(false);
+      const data = await fetchArticlesWithTopic(topic);
+      setArticles(data);
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
-      <h1>Latest articles</h1>
-      {loading && <p>Loading data, please wait...</p>}
-      {articles.length > 0 && <Articles items={articles} />}
-      {error && (
-        <p>Whoops, something went wrong! Please try reloading this page!</p>
-      )}
+      <SearchForm onSubmit={handleSearch} />
+      {loading && <Loader />}
+      {error && <Error />}
+      {articles.length > 0 && <ArticleList items={articles} />}
     </div>
   );
   // <div className={css.container}>

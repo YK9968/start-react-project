@@ -1,13 +1,13 @@
-export default function Articles({ items }) {
+export default function Articles({ item: { author, created_at, url, title } }) {
+  console.log(title);
   return (
-    <ul>
-      {items.map(({ objectID, url, title }) => (
-        <li key={objectID}>
-          <a href={url} target="_blank" rel="noreferrer noopener">
-            {title}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <>
+      <h2>{title}</h2>
+      <p>Author : {author}</p>
+      <a target="blank" href={url}>
+        Website
+      </a>
+      <p>Date publicate: {created_at}</p>
+    </>
   );
 }
