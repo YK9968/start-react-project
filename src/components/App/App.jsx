@@ -3,15 +3,20 @@
 // import Form from "../Form/Form";
 // import Filter from "../Filter/Filter";
 // import css from "./App.module.css";
-
 // import { useState } from "react";
 // import Error from "../Error/Error";
 // import Loader from "../Loader/Loader";
 // import SearchForm from "../SearchForm/SearchForm";
 // import { fetchArticlesWithTopic } from "../../articles-api";
 // import ArticleList from "../ArticleList/ArticleList";
-
-import Player from "../Player/Player";
+// import Player from "../Player/Player";
+import { Routes, Route, NavLink } from "react-router-dom";
+import Home from "../Home/Home";
+import About from "../About/About";
+import Products from "../Products/Products";
+import NotFound from "../NotFound/NotFound";
+import css from "./App.module.css";
+import ProductDetails from "../ProductDetails/ProductDetails";
 
 export default function App() {
   // const [articles, setArticles] = useState([]);
@@ -54,10 +59,25 @@ export default function App() {
 
   return (
     <div>
-      <Player source="http://media.w3.org/2010/05/sintel/trailer.mp4" />
+      <nav className={css.navApp}>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/products">Products</NavLink>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:productId" element={<ProductDetails />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 
+  // <div>
+  //   <Player source="http://media.w3.org/2010/05/sintel/trailer.mp4" />
+  // </div>
   // <div>
   //   <button onClick={() => setClicks(clicks + 1)}>
   //     Number of clicks: {clicks}
