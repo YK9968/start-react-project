@@ -10,14 +10,15 @@
 // import { fetchArticlesWithTopic } from "../../articles-api";
 // import ArticleList from "../ArticleList/ArticleList";
 // import Player from "../Player/Player";
-import { Routes, Route, NavLink } from "react-router-dom";
-import Home from "../Home/Home";
-import About from "../About/About";
-import Products from "../Products/Products";
-import NotFound from "../NotFound/NotFound";
+import Home from "../../pages/Home/Home";
+import About from "../../pages/About/About";
+import Products from "../../pages/Products/Products";
+import NotFound from "../../pages/NotFound/NotFound";
+import ProductDetails from "../../pages/ProductDetails/ProductDetails";
+import clsx from "clsx";
 import css from "./App.module.css";
-import ProductDetails from "../ProductDetails/ProductDetails";
 
+import { Routes, Route, NavLink } from "react-router-dom";
 export default function App() {
   // const [articles, setArticles] = useState([]);
   // const [loading, setLoading] = useState(false);
@@ -57,19 +58,29 @@ export default function App() {
 
   // const filteredPlanets = planets.filter((planet) => planet.includes(query));
 
+  const buildLinkClass = ({ isActive }) => {
+    return clsx(css.link, isActive && css.active);
+  };
+
   return (
     <div>
-      <nav className={css.navApp}>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/products">Products</NavLink>
+      <nav className={css.nav}>
+        <NavLink to="/" className={buildLinkClass}>
+          Home
+        </NavLink>
+        <NavLink to="/about" className={buildLinkClass}>
+          About
+        </NavLink>
+        <NavLink to="/products" className={buildLinkClass}>
+          Products
+        </NavLink>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/products/:productId" element={<ProductDetails />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
