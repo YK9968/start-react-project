@@ -17,6 +17,9 @@ import NotFound from "../../pages/NotFound/NotFound";
 import ProductDetails from "../../pages/ProductDetails/ProductDetails";
 import clsx from "clsx";
 import css from "./App.module.css";
+import Misison from "../../pages/Misison/Misison";
+import Team from "../../pages/Team/Team";
+import Reviews from "../../pages/Reviews/Reviews";
 
 import { Routes, Route, NavLink } from "react-router-dom";
 export default function App() {
@@ -78,7 +81,11 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About />}>
+          <Route path="mission" element={<Misison />} />
+          <Route path="team" element={<Team />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Route>
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="*" element={<NotFound />} />
