@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 export default function About() {
@@ -21,7 +22,9 @@ export default function About() {
           <NavLink to="reviews">reviews</NavLink>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }

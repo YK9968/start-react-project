@@ -10,18 +10,23 @@
 // import { fetchArticlesWithTopic } from "../../articles-api";
 // import ArticleList from "../ArticleList/ArticleList";
 // import Player from "../Player/Player";
-import Home from "../../pages/Home/Home";
-import About from "../../pages/About/About";
-import Products from "../../pages/Products/Products";
-import NotFound from "../../pages/NotFound/NotFound";
-import ProductDetails from "../../pages/ProductDetails/ProductDetails";
-import clsx from "clsx";
-import css from "./App.module.css";
-import Misison from "../../pages/Misison/Misison";
-import Team from "../../pages/Team/Team";
-import Reviews from "../../pages/Reviews/Reviews";
+// ================================================================== module 5
+// import clsx from "clsx";
+// import css from "./App.module.css";
+// import { Suspense, lazy } from "react";
+// import { Routes, Route, NavLink } from "react-router-dom";
+// import NotFound from "../../pages/NotFound/NotFound";
 
-import { Routes, Route, NavLink } from "react-router-dom";
+// const Home = lazy(() => import("../../pages/Home/Home"));
+// const About = lazy(() => import("../../pages/About/About"));
+// const ProductDetails = lazy(() =>
+//   import("../../pages/ProductDetails/ProductDetails")
+// );
+// const Products = lazy(() => import("../../pages/Products/Products"));
+// const Misison = lazy(() => import("../../pages/Misison/Misison"));
+// const Team = lazy(() => import("../../pages/Team/Team"));
+// const Reviews = lazy(() => import("../../pages/Reviews/Reviews"));
+
 export default function App() {
   // const [articles, setArticles] = useState([]);
   // const [loading, setLoading] = useState(false);
@@ -61,38 +66,33 @@ export default function App() {
 
   // const filteredPlanets = planets.filter((planet) => planet.includes(query));
 
-  const buildLinkClass = ({ isActive }) => {
-    return clsx(css.link, isActive && css.active);
-  };
-
-  return (
-    <div>
-      <nav className={css.nav}>
-        <NavLink to="/" className={buildLinkClass}>
-          Home
-        </NavLink>
-        <NavLink to="/about" className={buildLinkClass}>
-          About
-        </NavLink>
-        <NavLink to="/products" className={buildLinkClass}>
-          Products
-        </NavLink>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />}>
-          <Route path="mission" element={<Misison />} />
-          <Route path="team" element={<Team />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </div>
-  );
-
+  return; // <div>
+  //   {/* <nav className={css.nav}>
+  //   //     <NavLink to="/" className={buildLinkClass}>
+  //   //       Home
+  //   //     </NavLink>
+  //   //     <NavLink to="/about" className={buildLinkClass}>
+  //   //       About
+  //   //     </NavLink>
+  //   //     <NavLink to="/products" className={buildLinkClass}>
+  //   //       Products
+  //   //     </NavLink>
+  //   //   </nav>
+  //   //   <Suspense fallback={<div>Loading page...</div>}>
+  //   //     <Routes>
+  //   //       <Route path="/" element={<Home />} />
+  //   //       <Route path="/about" element={<About />}>
+  //   //         <Route path="mission" element={<Misison />} />
+  //   //         <Route path="team" element={<Team />} />
+  //   //         <Route path="reviews" element={<Reviews />} />
+  //   //       </Route>
+  //   //       <Route path="/products" element={<Products />} />
+  //   //       <Route path="/products/:id" element={<ProductDetails />} />
+  //   //       <Route path="*" element={<NotFound />} />
+  //   //     </Routes>
+  //   //   </Suspense> */}
+  // </div>;
+  // ================================================================module 5 ^^^^^
   // <div>
   //   <Player source="http://media.w3.org/2010/05/sintel/trailer.mp4" />
   // </div>
