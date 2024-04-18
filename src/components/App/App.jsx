@@ -16,7 +16,6 @@
 // import { Suspense, lazy } from "react";
 // import { Routes, Route, NavLink } from "react-router-dom";
 // import NotFound from "../../pages/NotFound/NotFound";
-
 // const Home = lazy(() => import("../../pages/Home/Home"));
 // const About = lazy(() => import("../../pages/About/About"));
 // const ProductDetails = lazy(() =>
