@@ -2,7 +2,6 @@
 // import initialTasks from "../../todo.json";
 // import Form from "../Form/Form";
 // import Filter from "../Filter/Filter";
-// import css from "./App.module.css";
 // import { useState } from "react";
 // import Error from "../Error/Error";
 // import Loader from "../Loader/Loader";
@@ -12,7 +11,6 @@
 // import Player from "../Player/Player";
 // ================================================================== module 5
 // import clsx from "clsx";
-// import css from "./App.module.css";
 // import { Suspense, lazy } from "react";
 // import { Routes, Route, NavLink } from "react-router-dom";
 // import NotFound from "../../pages/NotFound/NotFound";
@@ -25,6 +23,9 @@
 // const Misison = lazy(() => import("../../pages/Misison/Misison"));
 // const Team = lazy(() => import("../../pages/Team/Team"));
 // const Reviews = lazy(() => import("../../pages/Reviews/Reviews"));
+
+import Gallery from "../Gallery/Gallery";
+import css from "./App.module.css";
 
 export default function App() {
   // const [articles, setArticles] = useState([]);
@@ -65,7 +66,16 @@ export default function App() {
 
   // const filteredPlanets = planets.filter((planet) => planet.includes(query));
 
-  return; // <div>
+  return (
+    <div>
+      <h1>Amazing scientists</h1>
+      <div className={css.containerApp}>
+        <Gallery />
+      </div>
+    </div>
+  );
+
+  // <div>
   //   {/* <nav className={css.nav}>
   //   //     <NavLink to="/" className={buildLinkClass}>
   //   //       Home

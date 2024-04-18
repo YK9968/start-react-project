@@ -1,8 +1,4 @@
-.nav {
+.containerApp {
   display: flex;
   gap: 20px;
-}
-
-.active {
-  color: goldenrod;
 }
