@@ -24,7 +24,6 @@
 // const Team = lazy(() => import("../../pages/Team/Team"));
 // const Reviews = lazy(() => import("../../pages/Reviews/Reviews"));
 
-import Gallery from "../Gallery/Gallery";
 import css from "./App.module.css";
 
 export default function App() {
@@ -66,12 +65,77 @@ export default function App() {
 
   // const filteredPlanets = planets.filter((planet) => planet.includes(query));
 
+  const peoples = [
+    {
+      id: 0,
+      name: "Creola Katherine Johnson",
+      profession: "chemist",
+      accomplishment: "spaceflight calculations",
+      imageId: "MK3eW3A",
+    },
+    {
+      id: 1,
+      name: "Mario José Molina-Pasquel Henríquez",
+      profession: "chemist",
+      accomplishment: "discovery of Arctic ozone hole",
+      imageId: "mynHUSa",
+    },
+    {
+      id: 2,
+      name: "Mohammad Abdus Salam",
+      profession: "chemist",
+      accomplishment: "electromagnetism theory",
+      imageId: "bE7W1ji",
+    },
+    {
+      id: 3,
+      name: "Percy Lavon Julian",
+      profession: "chemist",
+      accomplishment:
+        "pioneering cortisone drugs, steroids and birth control pills",
+      imageId: "IOjWm71",
+    },
+    {
+      id: 4,
+      name: "Subrahmanyan Chandrasekhar",
+      profession: "chemist",
+      accomplishment: "white dwarf star mass calculations",
+      imageId: "lrWQx8l",
+    },
+  ];
+
+  const filterChemist = peoples.filter(
+    (peopel) => peopel.profession === "chemist"
+  );
+
+  function getImageUrl(person) {
+    return "https://i.imgur.com/" + person.imageId + "s.jpg";
+  }
+
+  function ListItem({ peoples }) {
+    return (
+      <>
+        <ul className={css.listChemist}>
+          {peoples.map((peopel) => (
+            <li key={peopel.id}>
+              <img
+                className={css.imgChemist}
+                src={getImageUrl(peopel)}
+                alt={peopel.name}
+              />
+              <p>
+                <b>{peopel.name}:</b> {peopel.accomplishment}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </>
+    );
+  }
+
   return (
-    <div>
-      <h1>Amazing scientists</h1>
-      <div className={css.containerApp}>
-        <Gallery />
-      </div>
+    <div className={css.containerMain}>
+      <ListItem peoples={filterChemist} />
     </div>
   );
 

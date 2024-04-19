@@ -1,4 +1,12 @@
-.containerApp {
-  display: flex;
-  gap: 20px;
+.containerMain {
+  padding: 20px;
+}
+
+.imgChemist {
+  margin-top: 10px;
+  border-radius: 50px;
+}
+
+.listChemist {
+  width: 300px;
 }
